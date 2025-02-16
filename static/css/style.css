@@ -1,0 +1,293 @@
+.game-container {
+    position: relative;
+    width: 400px;
+    height: 600px;
+    margin: 0 auto;
+    padding: 10px;
+    background: linear-gradient(145deg, var(--bs-dark) 0%, var(--bs-dark-rgb) 100%);
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(var(--bs-primary-rgb), 0.3);
+    transition: all 0.3s ease;
+}
+
+.game-container:hover {
+    box-shadow: 0 0 30px rgba(var(--bs-primary-rgb), 0.5);
+}
+
+#gameCanvas {
+    background-color: var(--bs-dark);
+    border: 2px solid var(--bs-primary);
+    border-radius: 10px;
+    transition: border-color 0.3s ease;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+}
+
+.overlay-content {
+    text-align: center;
+    color: var(--bs-light);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.overlay.active {
+    display: flex;
+}
+
+.overlay.active .overlay-content {
+    transform: scale(1);
+}
+
+.game-info {
+    background: rgba(var(--bs-dark-rgb), 0.7);
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.shape-indicator {
+    display: inline-block;
+    padding: 5px 15px;
+    background: var(--bs-primary);
+    border-radius: 20px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    text-transform: capitalize;
+}
+
+.score-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--bs-primary);
+    text-shadow: 0 0 10px rgba(var(--bs-primary-rgb), 0.3);
+}
+
+.multiplier {
+    font-size: 1.2rem;
+    color: var(--bs-info);
+}
+
+.multiplier-value {
+    font-weight: bold;
+    color: var(--bs-warning);
+    animation: pulse 1s ease-in-out infinite;
+}
+
+.combo {
+    font-size: 1.2rem;
+    color: var(--bs-info);
+}
+
+.combo-value {
+    font-weight: bold;
+    color: var(--bs-danger);
+    font-size: 1.4rem;
+    text-shadow: 0 0 10px rgba(var(--bs-danger-rgb), 0.3);
+    animation: pulse 0.5s ease-in-out infinite;
+    transition: all 0.3s ease;
+}
+
+.combo-value[data-combo="25"] {
+    color: var(--bs-warning);
+    font-size: 1.6rem;
+}
+
+.combo-value[data-combo="50"] {
+    color: var(--bs-info);
+    font-size: 1.8rem;
+}
+
+.combo-value[data-combo="100"] {
+    color: var(--bs-success);
+    font-size: 2rem;
+    text-shadow: 0 0 15px rgba(var(--bs-success-rgb), 0.5);
+}
+
+.controls-info {
+    opacity: 0.8;
+    font-size: 0.9rem;
+}
+
+.control-item {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(var(--bs-dark-rgb), 0.5);
+    padding: 8px 15px;
+    border-radius: 20px;
+    margin: 0 5px;
+    transition: all 0.3s ease;
+}
+
+.control-item:hover {
+    background: rgba(var(--bs-dark-rgb), 0.8);
+    transform: translateY(-2px);
+}
+
+.powerups-info {
+    margin-top: 15px;
+}
+
+.powerup-item {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(var(--bs-dark-rgb), 0.5);
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.powerup-item:hover {
+    background: rgba(var(--bs-dark-rgb), 0.8);
+    transform: translateY(-2px);
+}
+
+.power-up-statuses {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.power-up-status {
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    animation: pulse 1s ease-in-out infinite;
+}
+
+.power-up-status.invincible {
+    background: rgba(var(--bs-warning-rgb), 0.2);
+    color: var(--bs-warning);
+}
+
+.power-up-status.speed {
+    background: rgba(var(--bs-success-rgb), 0.2);
+    color: var(--bs-success);
+}
+
+.power-up-status.score {
+    background: rgba(var(--bs-info-rgb), 0.2);
+    color: var(--bs-info);
+}
+
+/* .title-glow {
+    background: linear-gradient(45deg, var(--bs-primary) 0%, var(--bs-info) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 10px rgba(var(--bs-primary-rgb), 0.5);
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px rgba(var(--bs-primary-rgb), 0.5);
+    }
+    to {
+        text-shadow: 0 0 20px rgba(var(--bs-primary-rgb), 0.8),
+                     0 0 30px rgba(var(--bs-info-rgb), 0.4);
+    }
+} */
+
+.title-glow {
+    background: linear-gradient(45deg, var(--bs-primary) 0%, var(--bs-info) 100%);
+    background-clip: text;
+    -webkit-background-clip: text; /* For WebKit-based browsers */
+    -moz-background-clip: text; /* For Mozilla-based browsers (not always needed) */
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 10px rgba(var(--bs-primary-rgb), 0.5);
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+/* Define the glow animation */
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 5px rgba(var(--bs-primary-rgb), 0.3);
+    }
+    100% {
+        text-shadow: 0 0 15px rgba(var(--bs-primary-rgb), 0.8);
+    }
+}
+
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+#restartButton {
+    transition: all 0.3s ease;
+    border-radius: 25px;
+    padding: 8px 25px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: linear-gradient(45deg, var(--bs-primary) 0%, var(--bs-info) 100%);
+    border: none;
+}
+
+#restartButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(var(--bs-primary-rgb), 0.4);
+}
+
+.shape-section {
+    position: relative;
+    padding: 10px;
+}
+
+.score-section {
+    background: rgba(var(--bs-dark-rgb), 0.3);
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.milestone-markers {
+    display: inline-flex;
+    gap: 10px;
+    margin-left: 10px;
+}
+
+.milestone-markers i {
+    opacity: 0.3;
+    transition: all 0.3s ease;
+}
+
+.milestone-markers i.reached {
+    opacity: 1;
+    animation: pulse 0.5s ease-in-out;
+}
+
+
+@keyframes celebrate {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2) rotate(10deg);
+    }
+}
+
+.milestone-reached {
+    animation: celebrate 0.5s ease-in-out;
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dodge the Blocks</title>
+    <link href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="container text-center my-4">
+        <h1 class="mb-4 title-glow display-4 fw-bold">Dodge the Blocks</h1>
+        <div class="game-container">
+            <canvas id="gameCanvas" width="400" height="600"></canvas>
+            <div id="overlay" class="overlay">
+                <div class="overlay-content">
+                    <h2 id="gameOverText" class="mb-3 display-5 fw-bold">Game Over!</h2>
+                    <p class="fs-4">Score: <span id="finalScore" class="text-primary">0</span></p>
+                    <p class="fs-5">Max Combo: <span id="maxCombo" class="text-warning">0</span></p>
+                    <button id="restartButton" class="btn btn-primary mt-3">
+                        <i class="bi bi-arrow-clockwise me-2"></i>Play Again
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="game-info mt-3">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-12">
+                    <div class="score-section mb-3">
+                        <p class="fs-5 mb-2">Score: <span id="currentScore" class="score-value">0</span></p>
+                        <p class="multiplier mb-0">Multiplier: <span id="multiplier" class="multiplier-value">x1.0</span></p>
+                        <p class="combo mb-0">Combo: <span id="combo" class="combo-value">0</span></p>
+                        <div class="milestones mt-2">
+                            <p class="mb-1 text-muted">Next milestone: 
+                                <span class="milestone-markers">
+                                    <i class="bi bi-diamond-fill text-warning" data-milestone="10"></i>
+                                    <i class="bi bi-diamond-fill text-info" data-milestone="25"></i>
+                                    <i class="bi bi-diamond-fill text-success" data-milestone="50"></i>
+                                    <i class="bi bi-diamond-fill text-danger" data-milestone="100"></i>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div id="powerUpStatuses" class="power-up-statuses mb-3"></div>
+                    <div class="shape-section mb-3">
+                        <p class="mb-2">Current Shape: <span id="currentShape" class="shape-indicator text-light">triangle</span></p>
+                    </div>
+                    <div class="controls-info mt-3">
+                        <div class="control-item mb-2">
+                            <i class="bi bi-arrow-keys me-2"></i>
+                            <span>Use arrows to move</span>
+                        </div>
+                        <div class="control-item">
+                            <i class="bi bi-keyboard me-2"></i>
+                            <span>Press SPACE to change shape</span>
+                        </div>
+                    </div>
+                    <div class="powerups-info mt-3">
+                        <div class="powerup-item mb-2">
+                            <i class="bi bi-shield-fill text-warning me-2"></i>
+                            <span>Shield - Temporary invincibility</span>
+                        </div>
+                        <div class="powerup-item mb-2">
+                            <i class="bi bi-lightning-fill text-success me-2"></i>
+                            <span>Speed Boost - Move faster</span>
+                        </div>
+                        <div class="powerup-item">
+                            <i class="bi bi-star-fill text-info me-2"></i>
+                            <span>Score Boost - Double points</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/game.js') }}"></script>
+</body>
+</html>

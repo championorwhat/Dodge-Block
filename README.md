@@ -14,14 +14,6 @@ Engaging gameplay with smooth animations
 
 Minimalistic and clean UI
 
-🛠️ Technologies Used
-
-Programming Language: [Your choice, e.g., Python, JavaScript]
-
-Game Framework: [e.g., Pygame, Unity, Phaser.js]
-
-IDE: [e.g., VS Code]
-
 🎮 How to Play
 
 Launch the game.
